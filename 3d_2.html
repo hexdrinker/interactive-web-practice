@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web For IE</title>
+    <style>
+        .world {
+            width: 80vw;
+            height: 80vh;
+            background: #fff000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 500px; /* 자식한테 상속이 안됨 */
+        }
+        .card-side {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 150px;
+            border-radius: 0.5em;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -75px 0 0 -50px;
+            transition: 1s;
+
+            -webkit-backface-visibility: hidden; /* for safari */
+            -moz-backface-visibility: hidden; /* for safari */
+            -o-backface-visibility: hidden; /* for safari */
+            backface-visibility: hidden; /* 뒷면 안보이게 */
+        }
+        .card-side-front {
+            z-index: 1;
+            background: white;
+        }
+        .card-side-back {
+            background: red;
+            transform: rotateY(180deg);
+        }
+        .world:hover .card-side-front {
+            transform: rotateY(180deg);
+        }
+        .world:hover .card-side-back {
+            transform: rotateY(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="world">
+        <div class="card-side card-side-front">F</div>
+        <div class="card-side card-side-back">B</div>
+    </div>
+</body>
+</html>
